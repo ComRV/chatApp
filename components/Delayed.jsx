@@ -15,7 +15,7 @@ const Delayed = ({ children, waitBeforeShow = 1000 }) => {
 	return isShown ? (
 		children
 	) : (
-		<div className="grid place-items-center h-full">
+		<div className="grid place-items-center w-full h-full">
 			<ReactLoading type="spin" color="#9f9f9f" />
 		</div>
 	);
