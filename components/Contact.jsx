@@ -1,6 +1,6 @@
 const Contact = () => {
 	return (
-		<div className="basis-[7cm] flex flex-col border-r border-r-[#3b3b3b]">
+		<div className="basis-[50%] md:basis-[35%] lg:basis-[21%] flex flex-col border-r border-r-[#3b3b3b]">
 			<input
 				type="text"
 				className="w-[90%] h-[2em] text-zinc-200 self-center tracking-wider duration-150 mt-5 mb-3 rounded border border-zinc-500 bg-transparent pl-2 text-sm focus:ring-zinc-300 font-intertight"
@@ -15,9 +15,9 @@ const Contact = () => {
 					/>
 				</svg>
 				<span className="row-span-1 col-start-2 col-end-5 ml-1 relative top-1">Rizky Duika</span>
-				<span className="row-span-2 col-start-2 col-end-5 ml-1 text-[13px] relative top-0.5">Hello World</span>
-				<span className="row-start-1 col-start-5 text-right text-xs relative left-1 top-[3px] place-self-center">23.59</span>
-				<span className="row-start-2 col-start-5 text-[10px] text-center rounded-full relative place-self-end right-1.5 bottom-[4.5px] w-[15px] h-[15px] bg-[#0D7377]">1</span>
+				<span className="row-span-2 col-start-2 truncate col-end-5 ml-1 text-[13px] relative top-[2px]">Hello World dqwdhuqiqddqwdqyduqd</span>
+				<span className="row-start-1 col-start-5 text-right text-xs relative left-[4px] top-[3px] place-self-center">23.59</span>
+				<span className="row-start-2 col-start-5 text-[10px] text-center rounded-full relative place-self-end right-[6px] bottom-[4.5px] w-[15px] h-[15px] bg-[#0D7377]">1</span>
 			</div>
 			<div className="grid grid-cols-5 grid-rows-2 text-zinc-200 font-intertight tracking-wider hover:bg-[#323232d3] cursor-pointer duration-100">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10 row-span-2 place-self-center">
@@ -28,9 +28,9 @@ const Contact = () => {
 					/>
 				</svg>
 				<span className="row-span-1 col-start-2 col-end-5 ml-1 relative top-1">Rizky Duika</span>
-				<span className="row-span-2 col-start-2 col-end-5 ml-1 text-[13px] relative top-0.5">Hello World</span>
-				<span className="row-start-1 col-start-5 text-right text-xs relative left-1 top-[3px] place-self-center">23.59</span>
-				<span className="row-start-2 col-start-5 text-[10px] text-center rounded-full relative place-self-end right-1.5 bottom-[4.5px] w-[15px] h-[15px] bg-[#0D7377]">1</span>
+				<span className="row-span-2 col-start-2 col-end-5 ml-1 text-[13px] relative top-[2px]">Hello World</span>
+				<span className="row-start-1 col-start-5 text-right text-xs relative left-[4px] top-[3px] place-self-center">23.59</span>
+				<span className="row-start-2 col-start-5 text-[10px] text-center rounded-full relative place-self-end right-[6px] bottom-[4.5px] w-[15px] h-[15px] bg-[#0D7377]">1</span>
 			</div>
 		</div>
 	);
