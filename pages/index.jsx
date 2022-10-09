@@ -1,7 +1,6 @@
 import Auth from '../components/layout/Auth';
 import Head from 'next/head';
 import Link from 'next/link';
-import Delayed from '../components/Delayed';
 
 export default function Home() {
 	return (

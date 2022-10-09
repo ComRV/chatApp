@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import ReactLoading from 'react-loading';
 
-const Delayed = ({ children, waitBeforeShow = 1000 }) => {
+const Loading = ({ children, waitBeforeShow = 1000 }) => {
 	const [isShown, setIsShown] = useState(false);
 
 	useEffect(() => {
@@ -21,4 +21,4 @@ const Delayed = ({ children, waitBeforeShow = 1000 }) => {
 	);
 };
 
-export default Delayed;
+export default Loading;
