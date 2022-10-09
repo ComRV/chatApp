@@ -1,5 +1,5 @@
 const Conversation = () => {
-	return <div>Conversation</div>;
+	return <div className="basis-[28cm]">Conversation</div>;
 };
 
 export default Conversation;

@@ -17,6 +17,7 @@ const register = () => {
 							type="email"
 							className="w-[90%] h-[2.5em] tracking-wider duration-150 mt-1 m-auto rounded border border-zinc-500 bg-transparent pl-2 text-sm focus:ring-zinc-300 font-intertight"
 							required="true"
+							placeholder="Email"
 						/>
 					</div>
 					<div className="flex flex-col mt-4">
@@ -25,6 +26,7 @@ const register = () => {
 							type="text"
 							className="w-[90%] h-[2.5em] tracking-wider duration-150 mt-1 m-auto rounded border border-zinc-500 bg-transparent pl-2 text-sm focus:ring-zinc-300 font-intertight"
 							required="true"
+							placeholder="Username"
 						/>
 					</div>
 					<div className="flex flex-col my-4">
@@ -33,6 +35,7 @@ const register = () => {
 							type="password"
 							className="w-[90%] h-[2.5em] tracking-wider duration-150 mt-1 m-auto rounded border border-zinc-500 bg-transparent pl-2 text-sm focus:ring-zinc-300"
 							required="true"
+							placeholder="Password"
 						/>
 					</div>
 					<div className="flex flex-col">
