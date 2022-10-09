@@ -1,5 +1,5 @@
 const Conversation = () => {
-	return <div className="basis-[75%]">Conversation</div>;
+	return <div>Conversation</div>;
 };
 
 export default Conversation;

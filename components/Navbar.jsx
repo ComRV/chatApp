@@ -1,6 +1,6 @@
 const Navbar = () => {
 	return (
-		<div className="basis-[3%] flex flex-col border-r border-r-[#3b3b3b]">
+		<div className="basis-[1cm] flex flex-col border-r border-r-[#3b3b3b]">
 			<div className="mt-2 w-full grid place-items-center cursor-pointer h-10 text-zinc-300 duration-150 hover:bg-[#0D7377] hover:text-inherit">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6">
 					<path
