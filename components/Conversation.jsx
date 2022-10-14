@@ -192,6 +192,17 @@ const Conversation = () => {
 					</span>
 				</div>
 			</div>
+
+			<div className="fixed bottom-0 h-10 flex items-center bg-[#1A1A1B] w-[0%] md:w-[59%] lg:w-[75%]">
+				<textarea
+					rows="1"
+					className="h-full bg-inherit pl-5 font-intertight tracking-wider focus:outline-none w-[97%] resize-none scrollbar-none leading-5 pt-2.5"
+					placeholder="Write a message"
+				></textarea>
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 cursor-pointer">
+					<path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+				</svg>
+			</div>
 		</div>
 	);
 };
