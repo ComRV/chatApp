@@ -1,5 +1,5 @@
-import Chat from '../../components/layout/Chat';
 import Head from 'next/head';
+import Navbar from '../../components/Navbar';
 
 const chat = () => {
 	return (
@@ -7,7 +7,9 @@ const chat = () => {
 			<Head>
 				<title>P - Chat</title>
 			</Head>
-			<Chat />
+			<main className="bg-[#212121] flex h-screen min-w-full">
+				<Navbar />
+			</main>
 		</>
 	);
 };
