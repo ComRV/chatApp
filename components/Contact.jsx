@@ -1,6 +1,9 @@
+import { AppContext } from '../pages/chat';
+import { useContext } from 'react';
+
 const Contact = () => {
 	return (
-		<div className={`basis-[100%] md:basis-[35%] lg:basis-[21%] flex flex-col border-r border-r-[#3b3b3b]`}>
+		<>
 			<input
 				type="text"
 				className="w-[90%] h-[2em] text-zinc-200 self-center tracking-wider duration-150 mt-5 mb-3 rounded border border-zinc-500 bg-transparent pl-2 text-sm focus:ring-zinc-300 font-intertight"
@@ -47,7 +50,7 @@ const Contact = () => {
 					<span className="row-start-2 col-start-5 text-[10px] text-center rounded-full ml-6 place-self-center bottom-[4.5px] w-[15px] h-[15px] bg-[#0D7377]">1</span>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

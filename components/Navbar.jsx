@@ -2,7 +2,9 @@ import { useContext } from 'react';
 import { AppContext } from '../pages/chat';
 
 const Navbar = () => {
-	const { openProfile, setOpenProfile } = useContext(AppContext);
+	const { openProfile, setOpenProfile } = useContext(AppContext)[0];
+	const { openContact, setOpenContact } = useContext(AppContext)[1];
+
 	return (
 		<nav className="basis-[8%] md:basis-[6%] lg:basis-[4%] flex flex-col border-r border-r-[#3b3b3b]">
 			<div className="w-full mt-3.5 grid place-items-center cursor-pointer h-10 text-zinc-300 duration-150 hover:bg-[#0D7377] hover:text-inherit">
@@ -16,7 +18,10 @@ const Navbar = () => {
 			</div>
 			<div
 				className={`w-full grid place-items-center cursor-pointer h-10 duration-150 ${openProfile ? 'bg-[#0D7377] text-inherit' : 'hover:bg-[#0D7377] hover:text-inherit text-zinc-300'}`}
-				onClick={() => setOpenProfile(!openProfile)}
+				onClick={() => {
+					setOpenProfile(!openProfile);
+					setOpenContact(!openContact);
+				}}
 			>
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6">
 					<path

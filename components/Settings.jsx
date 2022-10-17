@@ -4,9 +4,10 @@ import { useContext } from 'react';
 import { AppContext } from '../pages/chat';
 
 const Settings = () => {
-	const { openProfile, setOpenProfile } = useContext(AppContext);
+	const { openProfile, setOpenProfile } = useContext(AppContext)[0];
+	const { openContact, setOpenContact } = useContext(AppContext)[1];
 	return (
-		<div className="basis-[100%] duration-150 md:basis-[35%] text-zinc-300 font-intertight tracking-wider lg:basis-[21%] flex flex-col border-r border-r-[#3b3b3b]">
+		<>
 			<div className="flex h-12	place-items-center justify-between">
 				<p className="text-xl ml-3">Settings</p>
 				<svg
@@ -15,8 +16,11 @@ const Settings = () => {
 					viewBox="0 0 24 24"
 					strokeWidth={2}
 					stroke="currentColor"
-					className="w-6 h-6 mr-3 cursor-pointer hover:opacity-80 active:opacity-60"
-					onClick={() => setOpenProfile(!openProfile)}
+					className="w-6 h-6 mr-3 cursor-pointer duration-150 hover:opacity-80 active:opacity-60"
+					onClick={() => {
+						setOpenProfile(!openProfile);
+						setOpenContact(!openContact);
+					}}
 				>
 					<path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
 				</svg>
@@ -45,7 +49,7 @@ const Settings = () => {
 					<p className="text-xs text-zinc-500">Username</p>
 				</div>
 			</span>
-		</div>
+		</>
 	);
 };
 

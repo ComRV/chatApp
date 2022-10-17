@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Transition } from '@tailwindui/react';
+import { Transition } from '@headlessui/react';
 
 const Conversation = () => {
 	const [isShow, setIsShow] = useState(false);
