@@ -41,7 +41,7 @@ export default function Home() {
 						<p className="font-intertight tracking-wider font-zinc-200 text-xs ml-[5%] mt-1">
 							Dont have an account?
 							<Link href="/register">
-								<a className="inline cursor-pointer text-[#0d7477] hover:text-[#198185]"> Sign Up</a>
+								<p className="inline cursor-pointer text-[#0d7477] hover:text-[#198185]"> Sign Up</p>
 							</Link>
 						</p>
 					</div>

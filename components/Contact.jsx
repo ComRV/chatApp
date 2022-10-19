@@ -1,6 +1,3 @@
-import { AppContext } from '../pages/chat';
-import { useContext } from 'react';
-
 const Contact = () => {
 	return (
 		<>
