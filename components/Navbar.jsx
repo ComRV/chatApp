@@ -1,10 +1,16 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Navbar = () => {
+	const router = useRouter();
 	return (
 		<nav className="basis-[8%] md:basis-[6%] lg:basis-[4%] flex flex-col border-r border-r-[#3b3b3b]">
 			<Link href="/chat/contact">
-				<div className={`w-full mt-3.5 grid place-items-center cursor-pointer h-10 duration-150 hover:bg-[#0D7377] hover:text-inherit text-zinc-300`}>
+				<div
+					className={`w-full mt-3.5 grid place-items-center cursor-pointer h-10 duration-150 ${
+						router.pathname === '/chat/contact' ? 'bg-[#0D7377] text-inherit' : 'hover:bg-[#0D7377] hover:text-inherit text-zinc-300'
+					}`}
+				>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6">
 						<path
 							fillRule="evenodd"
@@ -15,7 +21,11 @@ const Navbar = () => {
 				</div>
 			</Link>
 			<Link href="/chat/settings">
-				<div className={`w-full grid place-items-center cursor-pointer h-10 duration-150 hover:bg-[#0D7377] hover:text-inherit text-zinc-300`}>
+				<div
+					className={`w-full grid place-items-center ${
+						router.pathname === '/chat/settings' ? 'bg-[#0D7377] text-inherit' : 'hover:bg-[#0D7377] hover:text-inherit text-zinc-300'
+					} cursor-pointer h-10 duration-150 hover:bg-[#0D7377] hover:text-inherit text-zinc-300`}
+				>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6">
 						<path
 							fillRule="evenodd"
