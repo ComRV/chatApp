@@ -10,8 +10,21 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Tes {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
-  title String
-  slug  String
+// model Tes {
+//   id        String   @id @default(auto()) @map("_id") @db.ObjectId
+//   title     String
+//   slug      String
+//   createdAt String
+//   dadwa     String[]
+// }
+
+model User {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId        String   @unique
+  nickname      String?
+  profilpicture String?
+  username      String   @unique
+  password      String
+  contact       String[]
+  createdAt     DateTime @default(now())
 }
