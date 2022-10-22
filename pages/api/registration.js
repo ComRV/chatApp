@@ -15,14 +15,15 @@ export default async function handler(req, res) {
 					username: true,
 				},
 			});
-			if (same) return res.status(400).json({ status: false, msg: 'Username has already been taken' });
-			if (data.password !== data.confirmPassword) return res.status(400).json({ status: false, msg: 'Password and confirm password must be match' });
-			if (data.username.length <= 8 || data.password.length <= 8) return res.status(400).json({ status: false, msg: 'Username or password less than 8 character' });
+			if (same) return res.status(400).json({ status: false, msg: 'Username has already been taken.' });
+			if (data.password !== data.confirmPassword) return res.status(400).json({ status: false, msg: 'Password and confirm password must be match.' });
+			if (data.username.length < 8 || data.password.length < 8) return res.status(400).json({ status: false, msg: 'Username and password less than 8 character.' });
 			data.password = await argon2.hash(data.password);
+			const userId = `11${Math.floor(Math.random() * 10 ** 10)}`;
 			delete data.confirmPassword;
-			Object.assign(data, { userId: `11${Math.floor(Math.random() * 10 ** 10)}` });
+			Object.assign(data, { userId, nickname: `User${userId}` });
 			await prisma.user.create({ data });
-			res.json({ status: true, msg: 'Registration successful' });
+			res.json({ status: true, msg: 'Registration successful. Redirect to login page on 3 seconds' });
 		} else {
 			return res.status(405).json('Method not allowed');
 		}
