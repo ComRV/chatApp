@@ -1,8 +1,14 @@
 import Link from 'next/link';
+import axios from 'axios';
 import { useRouter } from 'next/router';
+import Router from 'next/router';
 
 const Navbar = () => {
 	const router = useRouter();
+	const logout = async () => {
+		await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/auth`);
+		Router.push('/');
+	};
 	return (
 		<nav className="basis-[8%] md:basis-[6%] lg:basis-[4%] flex flex-col border-r border-r-[#3b3b3b]">
 			<Link href="/chat/contact">
@@ -35,7 +41,7 @@ const Navbar = () => {
 					</svg>
 				</div>
 			</Link>
-			<div className="w-full grid place-items-center cursor-pointer h-10 text-zinc-300 duration-150 hover:bg-[#0D7377] hover:text-inherit">
+			<div className="w-full grid place-items-center cursor-pointer h-10 text-zinc-300 duration-150 hover:bg-[#0D7377] hover:text-inherit" onClick={logout}>
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6">
 					<path
 						strokeLinecap="round"
