@@ -1,8 +1,23 @@
 import Auth from '../components/layout/Auth';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useState } from 'react';
+import axios from 'axios';
 
 export default function Home() {
+	const [username, setUsername] = useState('');
+	const [password, setPassword] = useState('');
+	const [isStay, setIsStay] = useState(false);
+
+	const auth = async (event) => {
+		event.preventDefault();
+		try {
+			const auth = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth`, { username, password, isStay });
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	return (
 		<>
 			<Head>
@@ -12,7 +27,7 @@ export default function Home() {
 				<div className="text-white container w-2/3 rounded-md h-[9.8cm] m-auto border border-zinc-800 bg-[#212121] md:w-2/4 lg:w-1/3">
 					<p className="text-center mt-10 font-roboto font-semibold text-sm text-zinc-600">WELCOME BACK</p>
 					<p className="text-center text-zinc-200 font-bold text-xl">LOGIN INTO YOUR ACCOUNT</p>
-					<form className="mt-6">
+					<form className="mt-6" onSubmit={auth}>
 						<div className="flex flex-col">
 							<label className="font-intertight tracking-wider text-sm text-zinc-300 ml-[5%]">Username</label>
 							<input
@@ -20,16 +35,29 @@ export default function Home() {
 								className="w-[90%] h-[2.5em] tracking-wider duration-150 mt-1 m-auto rounded border border-zinc-500 bg-transparent pl-2 text-sm focus:ring-zinc-300 font-intertight"
 								required="true"
 								placeholder="Username"
+								onChange={(event) => setUsername(event.target.value)}
 							/>
 						</div>
-						<div className="flex flex-col my-4">
+						<div className="flex flex-col mt-4">
 							<label className="font-intertight tracking-wider text-sm text-zinc-300 ml-[5%]">Password</label>
 							<input
 								type="password"
-								className="w-[90%] h-[2.5em] tracking-wider duration-150 mt-1 m-auto rounded border border-zinc-500 bg-transparent pl-2 text-sm focus:ring-zinc-300"
+								className="w-[90%] h-[2.5em] tracking-wider duration-150 mt-1 m-auto rounded border border-zinc-500 bg-transparent pl-2 text-sm focus:ring-zinc-300 font-intertight"
 								required="true"
 								placeholder="Password"
+								onChange={(event) => setPassword(event.target.value)}
 							/>
+						</div>
+						<div className="flex mt-1 ml-[5%] mb-3">
+							<input
+								type="checkbox"
+								className="tracking-wider accent-[#0d7477] duration-150 rounded border border-zinc-500 bg-transparent focus:ring-zinc-300"
+								id="stay"
+								onChange={() => setIsStay(!isStay)}
+							/>
+							<label htmlFor="stay" className="font-intertight tracking-wider text-xs ml-1 text-zinc-300">
+								Stay signed in
+							</label>
 						</div>
 						<div className="flex flex-col">
 							<button
