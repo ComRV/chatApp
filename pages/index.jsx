@@ -18,8 +18,7 @@ export default function Home() {
 		event.preventDefault();
 		try {
 			setIsLoading(true);
-			const auth = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth`, { username, password, isStay });
-			setIsLoading(false);
+			await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/login`, { username, password, isStay });
 			Router.push('/chat');
 		} catch (error) {
 			setIsLoading(false);

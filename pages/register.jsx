@@ -19,7 +19,6 @@ const register = () => {
 		try {
 			setIsLoading(true);
 			const register = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/registration`, { username, password, confirmPassword });
-			setIsLoading(false);
 			const response = register.data;
 			setMsg(response.msg);
 			setIsSuccess(response.status);

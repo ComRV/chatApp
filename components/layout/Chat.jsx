@@ -1,9 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Navbar from '../Navbar';
 import Conversation from '../Conversation';
 import { Transition } from '@headlessui/react';
 import Head from 'next/head';
+import axios from 'axios';
+import { useEffect } from 'react';
 
-const Chat = ({ children }) => {
+export default function Chat({ children }) {
 	return (
 		<>
 			<Head>
@@ -28,6 +31,4 @@ const Chat = ({ children }) => {
 			</main>
 		</>
 	);
-};
-
-export default Chat;
+}

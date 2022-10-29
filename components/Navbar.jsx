@@ -6,7 +6,7 @@ import Router from 'next/router';
 const Navbar = () => {
 	const router = useRouter();
 	const logout = async () => {
-		await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/auth`);
+		await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/login`);
 		Router.push('/');
 	};
 	return (
