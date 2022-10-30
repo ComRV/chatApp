@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import Chat from '../../components/layout/Chat';
 import Settings from '../../components/Settings';
 

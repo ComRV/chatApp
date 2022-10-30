@@ -3,8 +3,6 @@ import Navbar from '../Navbar';
 import Conversation from '../Conversation';
 import { Transition } from '@headlessui/react';
 import Head from 'next/head';
-import axios from 'axios';
-import { useEffect } from 'react';
 
 export default function Chat({ children }) {
 	return (

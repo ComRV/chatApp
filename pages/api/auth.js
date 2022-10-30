@@ -1,28 +1,19 @@
 import { verify } from 'jsonwebtoken';
-import { getCookie } from 'cookies-next';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { getCookie, deleteCookie } from 'cookies-next';
 
 export default async function handler(req, res) {
 	if (req.method === 'GET') {
 		try {
 			const token = getCookie('_AT', { req, res });
-			if (!token) return res.status(403).json('Auth failed');
+			if (!token) {
+				deleteCookie('_AT', { req, res });
+				return res.status(403).json({ status: false, msg: 'Authentification failed' });
+			}
 			const decode = verify(token, process.env.NEXT_PUBLIC_SECRET_TOKEN);
-			const data = await prisma.user.findUnique({
-				where: {
-					userId: decode.userId,
-				},
-				select: {
-					username: true,
-					userId: true,
-					nickname: true,
-				},
-			});
-			res.json(data);
+			res.json('Authentificated');
 		} catch (error) {
-			return res.status(403).json('Auth failed');
+			deleteCookie('_AT', { req, res });
+			return res.status(404).json({ error });
 		}
 	} else {
 		res.status(404).json('Method not allowed');

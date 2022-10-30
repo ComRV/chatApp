@@ -22,7 +22,9 @@ export default async function handler(req, res) {
 			const match = await argon2.verify(auth.password, data.password);
 			if (!match) return res.status(400).json({ status: false, msg: 'Username or password incorrect' });
 			const accessToken = jwt.sign({ userId: auth.userId }, process.env.NEXT_PUBLIC_SECRET_TOKEN);
-			data.isStay ? setCookies('_AT', accessToken, { req, res, maxAge: 30 * 24 * 60 * 60, httpOnly: true }) : setCookies('_AT', accessToken, { req, res, httpOnly: true });
+			data.isStay
+				? setCookies('_AT', accessToken, { req, res, maxAge: 30 * 24 * 60 * 60, httpOnly: true, sameSite: 'strict' })
+				: setCookies('_AT', accessToken, { req, res, httpOnly: true, sameSite: 'strict' });
 			res.json('OK');
 		} catch (error) {
 			return res.status(400).json({ status: false, msg: 'Username or password incorrect' });

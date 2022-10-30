@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import profile from '../public/img/profile.jpg';
 import Image from 'next/image';
 import Link from 'next/link';
