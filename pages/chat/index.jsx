@@ -2,7 +2,7 @@
 import Chat from '../../components/layout/Chat';
 import Contact from '../../components/Contact';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Router from 'next/router';
 
 const chat = () => {
