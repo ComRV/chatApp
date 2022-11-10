@@ -27,7 +27,15 @@ const Contactlist = () => {
 					className="w-4/5 h-[0.8cm] text-zinc-200 tracking-wider duration-150 rounded border border-zinc-500 bg-transparent pl-2 text-sm focus:ring-zinc-300 font-intertight"
 					placeholder="Search Contact"
 				/>
-				<svg xmlns="http://www.w3.org/2000/svg" onClick={() => setIsShow(!isShow)} fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 cursor-pointer">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					onClick={() => setIsShow(!isShow)}
+					fill="none"
+					viewBox="0 0 24 24"
+					strokeWidth={2}
+					stroke="currentColor"
+					className="w-6 h-6 cursor-pointer duration-150 hover:opacity-80 active:opacity-60"
+				>
 					<path
 						strokeLinecap="round"
 						strokeLinejoin="round"
