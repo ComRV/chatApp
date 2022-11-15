@@ -35,25 +35,29 @@ export default async function handler(req, res) {
 			});
 			res.json({ data });
 		} catch (error) {
-			res.status(403).json(error);
+			res.status(403).json('ERROR');
 		}
 	} else if (req.method === 'GET') {
-		const userId = req.body;
-		const token = getCookie('_AT', { req, res });
-		if (!token) {
-			deleteCookie('_AT', { req, res });
-			return res.status(403).json({ status: false, msg: 'Authentification failed' });
+		try {
+			const token = getCookie('_AT', { req, res });
+			if (!token) {
+				deleteCookie('_AT', { req, res });
+				return res.status(403).json({ status: false, msg: 'Authentification failed' });
+			}
+			verify(token, process.env.NEXT_PUBLIC_SECRET_TOKEN);
+			const found = await prisma.user.findUnique({
+				where: {
+					userId: req.query.id,
+				},
+				select: {
+					userId: true,
+					nickname: true,
+				},
+			});
+			found ? res.json({ status: true, result: found }) : res.json({ status: false });
+		} catch (error) {
+			res.status(403).json(error);
 		}
-		const decode = verify(token, process.env.NEXT_PUBLIC_SECRET_TOKEN);
-		const found = await prisma.user.findUnique({
-			where: {
-				userId: userId.userId,
-			},
-			select: {
-				nickname: true,
-			},
-		});
-		found ? res.json({ nickname: found.nickname }) : res.json({ msg: 'Contact not found' });
 	} else {
 		res.status(405).json('Method not allowed');
 	}
