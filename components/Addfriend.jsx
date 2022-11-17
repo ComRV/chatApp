@@ -9,6 +9,7 @@ const Addfriend = () => {
 	const { isShow, setIsShow } = useContext(AddFriend);
 	const [status, setStatus] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
+	const [isExist, setIsExist] = useState(false);
 	const [result, setResult] = useState({});
 	const searchContact = async (event) => {
 		event.preventDefault();
@@ -17,17 +18,26 @@ const Addfriend = () => {
 		setIsLoading(false);
 		setStatus(searching.data.status);
 		setResult(searching.data.result);
+		setIsExist(searching.data.result.exist);
 	};
-
+	const addcontact = async (id, event) => {
+		try {
+			event.preventDefault();
+			await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/contactlist`, { id });
+			!isExist && setIsExist(true);
+		} catch (error) {
+			console.log(error);
+		}
+	};
 	return (
 		<div className="fixed left-0 top-0 grid place-items-center w-screen h-screen z-10 bg-[#00000059]">
 			<Transition
 				className="w-1/2 h-[80%] md:h-[60%] bg-[#212121] text-zinc-200 rounded-md"
 				show={isShow}
-				enter="transition ease-in-out duration-200 transform"
+				enter="transition ease-in-out duration-150 transform"
 				enterFrom="scale-0"
 				enterTo="scale-1"
-				leave="transition ease-in-out duration-200 transform"
+				leave="transition ease-in-out duration-150 transform"
 				leaveFrom="scale-1"
 				leaveTo="scale-0"
 				appear={true}
@@ -61,7 +71,7 @@ const Addfriend = () => {
 							<ReactLoading type="spin" color="#9f9f9f" />
 						</div>
 					) : status ? (
-						<div className="flex items-center w-full h-[50px] font-intertight tracking-wider">
+						<div className="flex items-center w-full mt-2 h-[50px] font-intertight tracking-wider">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-zinc-300 mx-2">
 								<path
 									fillRule="evenodd"
@@ -70,20 +80,27 @@ const Addfriend = () => {
 								/>
 							</svg>
 							<p className="text-[15px]">{result.nickname}</p>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-								strokeWidth={2}
-								stroke="currentColor"
-								className="w-6 h-6 cursor-pointer ml-3 duration-150 hover:opacity-80 active:opacity-60"
-							>
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z"
-								/>
-							</svg>
+							{isExist ? (
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 ml-1 ">
+									<path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+								</svg>
+							) : (
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									fill="none"
+									viewBox="0 0 24 24"
+									strokeWidth={2}
+									stroke="currentColor"
+									onClick={(event) => addcontact(result.userId, event)}
+									className="w-6 h-6 cursor-pointer ml-3 duration-150 hover:opacity-80 active:opacity-60"
+								>
+									<path
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z"
+									/>
+								</svg>
+							)}
 						</div>
 					) : (
 						<p className="place-content-center h-full grid font-intertight tracking-wider text-xl opacity-50">Contact not found</p>
