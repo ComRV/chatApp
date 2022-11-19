@@ -1,9 +1,13 @@
+/* eslint-disable react/jsx-key */
 import Link from 'next/link';
 import { useContext } from 'react';
 import { AddFriend } from '../pages/chat/contact';
+import ReactLoading from 'react-loading';
 
 const Contactlist = () => {
-	const { isShow, setIsShow } = useContext(AddFriend);
+	const { isShow, setIsShow } = useContext(AddFriend)[0];
+	const isLoading = useContext(AddFriend)[1];
+	const contacts = useContext(AddFriend)[2];
 	return (
 		<>
 			<div className="flex h-12	place-items-center justify-between">
@@ -44,136 +48,28 @@ const Contactlist = () => {
 				</svg>
 			</div>
 			<div className="overflow-auto scrollbar-none text-zinc-200 h-[86%]">
-				<div className="flex items-center cursor-pointer duration-150 h-[60px] font-intertight tracking-wider hover:bg-[#323232d3]">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10 text-zinc-300 mx-2">
-						<path
-							fillRule="evenodd"
-							d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-							clipRule="evenodd"
-						/>
-					</svg>
-					<p>Rizky Duika</p>
-				</div>
-				<div className="flex items-center cursor-pointer duration-150 h-[60px] font-intertight tracking-wider hover:bg-[#323232d3]">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10 text-zinc-300 mx-2">
-						<path
-							fillRule="evenodd"
-							d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-							clipRule="evenodd"
-						/>
-					</svg>
-					<p>Rizky Duika</p>
-				</div>
-				<div className="flex items-center cursor-pointer duration-150 h-[60px] font-intertight tracking-wider hover:bg-[#323232d3]">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10 text-zinc-300 mx-2">
-						<path
-							fillRule="evenodd"
-							d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-							clipRule="evenodd"
-						/>
-					</svg>
-					<p>Rizky Duika</p>
-				</div>
-				<div className="flex items-center cursor-pointer duration-150 h-[60px] font-intertight tracking-wider hover:bg-[#323232d3]">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10 text-zinc-300 mx-2">
-						<path
-							fillRule="evenodd"
-							d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-							clipRule="evenodd"
-						/>
-					</svg>
-					<p>Rizky Duika</p>
-				</div>
-				<div className="flex items-center cursor-pointer duration-150 h-[60px] font-intertight tracking-wider hover:bg-[#323232d3]">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10 text-zinc-300 mx-2">
-						<path
-							fillRule="evenodd"
-							d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-							clipRule="evenodd"
-						/>
-					</svg>
-					<p>Rizky Duika</p>
-				</div>
-				<div className="flex items-center cursor-pointer duration-150 h-[60px] font-intertight tracking-wider hover:bg-[#323232d3]">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10 text-zinc-300 mx-2">
-						<path
-							fillRule="evenodd"
-							d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-							clipRule="evenodd"
-						/>
-					</svg>
-					<p>Rizky Duika</p>
-				</div>
-				<div className="flex items-center cursor-pointer duration-150 h-[60px] font-intertight tracking-wider hover:bg-[#323232d3]">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10 text-zinc-300 mx-2">
-						<path
-							fillRule="evenodd"
-							d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-							clipRule="evenodd"
-						/>
-					</svg>
-					<p>Rizky Duika</p>
-				</div>
-				<div className="flex items-center cursor-pointer duration-150 h-[60px] font-intertight tracking-wider hover:bg-[#323232d3]">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10 text-zinc-300 mx-2">
-						<path
-							fillRule="evenodd"
-							d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-							clipRule="evenodd"
-						/>
-					</svg>
-					<p>Rizky Duika</p>
-				</div>
-				<div className="flex items-center cursor-pointer duration-150 h-[60px] font-intertight tracking-wider hover:bg-[#323232d3]">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10 text-zinc-300 mx-2">
-						<path
-							fillRule="evenodd"
-							d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-							clipRule="evenodd"
-						/>
-					</svg>
-					<p>Rizky Duika</p>
-				</div>
-				<div className="flex items-center cursor-pointer duration-150 h-[60px] font-intertight tracking-wider hover:bg-[#323232d3]">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10 text-zinc-300 mx-2">
-						<path
-							fillRule="evenodd"
-							d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-							clipRule="evenodd"
-						/>
-					</svg>
-					<p>Rizky Duika</p>
-				</div>
-				<div className="flex items-center cursor-pointer duration-150 h-[60px] font-intertight tracking-wider hover:bg-[#323232d3]">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10 text-zinc-300 mx-2">
-						<path
-							fillRule="evenodd"
-							d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-							clipRule="evenodd"
-						/>
-					</svg>
-					<p>Rizky Duika</p>
-				</div>
-				<div className="flex items-center cursor-pointer duration-150 h-[60px] font-intertight tracking-wider hover:bg-[#323232d3]">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10 text-zinc-300 mx-2">
-						<path
-							fillRule="evenodd"
-							d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-							clipRule="evenodd"
-						/>
-					</svg>
-					<p>Rizky Duika</p>
-				</div>
-				<div className="flex items-center cursor-pointer duration-150 h-[60px] font-intertight tracking-wider hover:bg-[#323232d3]">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10 text-zinc-300 mx-2">
-						<path
-							fillRule="evenodd"
-							d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-							clipRule="evenodd"
-						/>
-					</svg>
-					<p>Rizky Duika</p>
-				</div>
+				{isLoading ? (
+					<div className="grid place-items-center w-full h-full">
+						<ReactLoading type="spin" color="#9f9f9f" width={'15%'} />
+					</div>
+				) : contacts.length > 0 ? (
+					contacts.map((contact) => {
+						return (
+							<div className="flex items-center cursor-pointer duration-150 h-[60px] font-intertight tracking-wider hover:bg-[#323232d3]">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10 text-zinc-300 mx-2">
+									<path
+										fillRule="evenodd"
+										d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+										clipRule="evenodd"
+									/>
+								</svg>
+								<p>{contact.nickname}</p>
+							</div>
+						);
+					})
+				) : (
+					<div className="grid place-items-center w-full h-full font-intertight tracking-wider text-xl opacity-50">Contact not available</div>
+				)}
 			</div>
 		</>
 	);

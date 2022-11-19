@@ -6,7 +6,7 @@ import ReactLoading from 'react-loading';
 import axios from 'axios';
 
 const Addfriend = () => {
-	const { isShow, setIsShow } = useContext(AddFriend);
+	const { isShow, setIsShow } = useContext(AddFriend)[0];
 	const [status, setStatus] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const [isExist, setIsExist] = useState(false);
@@ -14,11 +14,11 @@ const Addfriend = () => {
 	const searchContact = async (event) => {
 		event.preventDefault();
 		setIsLoading(true);
-		const searching = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/contactlist?id=${event.target.value}`);
+		const searching = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/searchcontact?id=${event.target.value}`);
 		setIsLoading(false);
 		setStatus(searching.data.status);
 		setResult(searching.data.result);
-		setIsExist(searching.data.result.exist);
+		status && setIsExist(searching.data.result.exist);
 	};
 	const addcontact = async (id, event) => {
 		try {
