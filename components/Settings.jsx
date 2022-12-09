@@ -3,28 +3,51 @@ import profile from '../public/img/profile.jpg';
 import Image from 'next/image';
 import Link from 'next/link';
 import { UserData } from '../pages/chat/settings';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import ReactLoading from 'react-loading';
+import axios from 'axios';
 
 const Settings = () => {
 	const user = useContext(UserData)[0];
 	const isLoading = useContext(UserData)[1];
+	const [nickname, setNickname] = useState(user.nickname);
+	const [changenickname, setChangeNickname] = useState(false);
+	const [loadingchange, setLoadingchange] = useState(false);
+	const changeNickname = async (event) => {
+		if (event.keyCode === 13) {
+			setLoadingchange(true);
+			await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/auth`, { nickname });
+			window.location.reload();
+		}
+	};
 	return (
 		<>
 			<div className="flex h-12	place-items-center justify-between">
 				<p className="text-xl ml-3">Settings</p>
-				<Link href="/chat">
+				<div className="flex">
 					<svg
-						xmlns="http://www.w3.org/2000/svg"
+						className="w-5 h-5 mt-0.5 mr-1 cursor-pointer duration-150 hover:opacity-80 active:opacity-60"
 						fill="none"
-						viewBox="0 0 24 24"
-						strokeWidth={2}
 						stroke="currentColor"
-						className="w-6 h-6 mr-3 cursor-pointer duration-150 hover:opacity-80 active:opacity-60"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+						onClick={() => setChangeNickname(!changenickname)}
 					>
-						<path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
 					</svg>
-				</Link>
+					<Link href="/chat">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							strokeWidth={2}
+							stroke="currentColor"
+							className="w-6 h-6 mr-3 cursor-pointer duration-150 hover:opacity-80 active:opacity-60"
+						>
+							<path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+						</svg>
+					</Link>
+				</div>
 			</div>
 			{isLoading ? (
 				<div className="grid place-items-center w-full h-full">
@@ -33,7 +56,7 @@ const Settings = () => {
 			) : (
 				<>
 					<Image src={profile} alt="" className="" />
-					<span className="flex place-items-center mt-3 ml-2">
+					<span className="flex place-items-center mt-3 ml-2 w-full">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-9 h-9 text-zinc-300">
 							<path
 								fillRule="evenodd"
@@ -42,7 +65,21 @@ const Settings = () => {
 							/>
 						</svg>
 						<div className="ml-5">
-							<p className="-mb-1 tracking-wider">{user.nickname}</p>
+							{changenickname ? (
+								<div className="flex">
+									<input
+										type="text"
+										className="bg-inherit w-[75%] tracking-wider border-b-2 duration-100	 border-b-zinc-500 focus:outline-none focus:border-b-white"
+										value={nickname}
+										placeholder="Press enter"
+										onKeyDown={(event) => changeNickname(event)}
+										onChange={(event) => setNickname(event.target.value)}
+									/>
+									{loadingchange && <ReactLoading type="spinningBubbles" className="-ml-4 self-center" color="#ffffff" height={'17px'} width={'17px'} />}
+								</div>
+							) : (
+								<p className="-mb-1 tracking-wider">{user.nickname}</p>
+							)}
 							<p className="text-xs text-zinc-500">Nickname</p>
 						</div>
 					</span>

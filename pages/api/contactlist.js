@@ -22,7 +22,7 @@ export default async function handler(req, res) {
 				},
 			});
 			const contactData = [];
-			lists.contact.forEach(async (list) => {
+			lists.contact.map(async (list) => {
 				const contact = await prisma.user.findUnique({
 					where: {
 						userId: list,
@@ -40,7 +40,6 @@ export default async function handler(req, res) {
 			}, 1000);
 		} catch (error) {
 			res.status(403).json('ERROR');
-			console.log(error);
 		}
 	} else if (req.method === 'POST') {
 		try {

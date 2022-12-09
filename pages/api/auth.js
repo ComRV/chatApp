@@ -27,6 +27,27 @@ export default async function handler(req, res) {
 			deleteCookie('_AT', { req, res });
 			return res.status(404).json({ error });
 		}
+	} else if (req.method === 'PATCH') {
+		try {
+			const token = getCookie('_AT', { req, res });
+			if (!token) {
+				deleteCookie('_AT', { req, res });
+				return res.status(403).json({ status: false, msg: 'Authentification failed' });
+			}
+			const decode = verify(token, process.env.NEXT_PUBLIC_SECRET_TOKEN);
+			const update = await prisma.user.update({
+				where: {
+					userId: decode.userId,
+				},
+				data: {
+					nickname: req.body.nickname,
+				},
+			});
+			res.json('OK');
+		} catch (error) {
+			console.log(error);
+			return res.status(404).json({ error });
+		}
 	} else {
 		res.status(404).json('Method not allowed');
 	}

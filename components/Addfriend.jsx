@@ -17,8 +17,8 @@ const Addfriend = () => {
 		const searching = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/searchcontact?id=${event.target.value}`);
 		setIsLoading(false);
 		setStatus(searching.data.status);
+		searching.data.status && setIsExist(searching.data.result.exist);
 		setResult(searching.data.result);
-		status && setIsExist(searching.data.result.exist);
 	};
 	const addcontact = async (id, event) => {
 		try {
@@ -63,7 +63,7 @@ const Addfriend = () => {
 						onChange={searchContact}
 						className="text-zinc-200 w-[50%] lg:w-[75%] h-[30px] mr-2 tracking-wider duration-150 rounded border border-zinc-500 bg-transparent pl-2 text-sm focus:ring-zinc-300 font-intertight"
 					/>
-					<button className="bg-[#0d7477] py-[0.35em] px-3 rounded hover:bg-[#0d7477e0] active:bg-[#0d7477c0] duration-150 font-intertight tracking-wider text-sm">Search by ID</button>
+					<button className="bg-[#0d7477] py-[0.35em] px-2 rounded hover:bg-[#0d7477e0] active:bg-[#0d7477c0] duration-150 font-intertight tracking-wider text-sm">Search by ID</button>
 				</div>
 				<div className="overflow-auto scrollbar-none text-zinc-200 h-[74.5%]">
 					{isLoading ? (
